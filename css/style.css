@@ -295,7 +295,21 @@ body {
     filter: brightness(0.2); /* Turns image black */
     transform: scale(1.05); /* Slight zoom effect */
 }
+.instagram-logo {
+    width: 50px; /* You can adjust the size of the logo */
+    height: auto;
+}
 
+/* Show the overlay with logo on hover */
+.social-image:hover .overlay {
+    opacity: 1;
+}
+
+/* Optional: Zoom effect on image hover */
+.social-image:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
 .footer {
     width: 100%;
     justify-content: center;
