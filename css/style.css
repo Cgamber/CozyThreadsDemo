@@ -1,0 +1,171 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Cabin', sans-serif;
+    height: 100vh;
+}
+
+/* Navbar styling */
+.navbar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    transition: 0.5s;
+    background-color: transparent; /* Transparent navbar background */
+}
+
+/* Links container */
+.links-container {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 4rem; /* Adjust spacing between nav items */
+}
+
+/* Individual nav item styling */
+.nav-item {
+    font-size: 18px;
+    font-weight: bold;
+}
+.link {
+    text-decoration: none;
+    color: #F5F5DC; /* Light beige color for links */
+    padding: 12px 20px;
+    border-radius: 50%; /* Creates the circular border effect */
+    border: 2px solid #fff; /* White border around each link */
+    display: inline-block; /* Ensures that padding and border radius work */
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease; /* Fade, scale, and background color effects */
+}
+
+/* Hover effect for links */
+.link:hover {
+    opacity: 0.7; /* Fade effect */
+    transform: scale(1.1); /* Slight zoom effect */
+    background-color: #F5F5DC; /* Light beige background color on hover */
+    color: #5f5a4f; /* Change text color on hover for contrast */
+}
+
+/* Ensuring no margin/padding on ul */
+.navbar ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+/* Centering links in the container */
+.links-container {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+.user-interactions {
+    display: flex;
+    align-items: center;
+    right: 5px;
+    top: auto;
+}
+
+.user-interaction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart, .user {
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon, .user-icon {
+    width: 30px;
+    height: 30px;
+    height: auto; /* Keep the aspect ratio intact */
+    margin-right: 8px; /* Optional: Space between image and text */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Optional: Style for the cart number and user name */
+.cart-number, .user-name {
+    font-size: 16px; /* Adjust the text size to match the smaller images */
+}
+
+
+
+.header-section {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../images/bck.jpg'); /* Adjusted image path */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.header-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff; /* Dark overlay for better text visibility */
+    z-index: -1;
+}
+
+.header-heading {
+    font-size: 100px;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.header-heading span {
+    color: #F5F5DC;
+}
+
+.Best-Sellers {
+    width: 100%; 
+  padding: 50px 0;
+    position: relative;
+}
+
+.carousel-container {
+    overflow: hidden; /* Prevents overflow */
+    width: 100%; /* Full width for carousel */
+    margin: 0 auto;
+}
+.products
+{
+    display: flex;
+    justify-content: space-between;
+}
+.product-box
+{
+    width: 300px;
+    height : 400px;
+    overflow: hidden;
+    position: relative;
+}
+.footer {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
