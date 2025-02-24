@@ -1,0 +1,76 @@
+/* Ensure full height and no margin */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+    background-color: #f9f9f9;
+}
+
+.product-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;  /* Stack the image and product details */
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px; /* Ensure the image doesn't grow too large */
+    object-fit: contain;
+    margin-bottom: 20px; /* Space between image and product details */
+}
+
+.productdetail {
+    max-width: 400px;
+}
+
+.product-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #555;
+}

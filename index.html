@@ -8,57 +8,220 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css"> 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: relative;
+        }
+
+        .links-container {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .link-item {
+            position: relative;
+        }
+
+        .link {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            padding: 10px;
+            display: block;
+        }
+
+        /* Dropdown Styling */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 600px;
+            background: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            padding: 20px;
+            z-index: 10;
+            display: flex;
+        }
+
+        .link-item:hover .dropdown {
+            display: flex;
+        }
+
+        .dropdown-column {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .dropdown-column h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .dropdown-column a {
+            text-decoration: none;
+            display: block;
+            color: #666;
+            font-size: 14px;
+            padding: 5px 0;
+        }
+
+        .dropdown-images {
+            flex: 1;
+            text-align: center;
+        }
+
+        .dropdown-images img {
+            width: 100%;
+            max-width: 150px;
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
 </head>
 <body>
 
-    <nav class = "navbar">
+    <nav class="navbar">
         <ul class="links-container">
-            <li class ="link-item"><a href="#"class="link">Home</a></li>
-            <li class ="link-item"><a href="#"class="link">About</a></li>
-            <li class ="shop.html"><a href="#"class="link">Shop</a></li>
-            <li class ="link-item"><a href="#"class="link">Contact</a></li> 
+            <li class="link-item"><a href="#" class="link">Home</a></li>
+            <li class="link-item"><a href="#" class="link">About</a></li>
+            <li class="link-item">
+                <a href="shop.html" class="link">Shop</a>
+                <!-- Dropdown Menu -->
+                <div class="dropdown">
+                    <div class="dropdown-column">
+                        <h4>Featured</h4>
+                        <a href="#">Best Sellers</a>
+                        <a href="#">New Arrivals</a>
+                    </div>
+                    <div class="dropdown-column">
+                        <h4>Category</h4>
+                        <a href="#">Shop All</a>
+                        <a href="#">Tops + Blouses</a>
+                        <a href="#">Tees</a>
+                        <a href="#">Pants</a>
+                        <a href="#">Jackets + Outerwear</a>
+                        <a href="#">Pullovers</a>
+                        <a href="#">Dresses + Jumpsuits</a>
+                        <a href="#">Shorts + Skirts</a>
+                    </div>
+                    <div class="dropdown-column">
+                        <h4>More</h4>
+                        <a href="#">Accessories</a>
+                    </div>
+                    <div class="dropdown-images">
+                        <img src="images/top.jpg" alt="Tops">
+                        <img src="images/pants.jpg" alt="Pants">
+                    </div>
+                </div>
+            </li>
+            <li class="link-item"><a href="#" class="link">Sustainability</a></li> 
         </ul>
-<div class ="user-interaction">
-    <div class="cart">
-        <img src="images/cart.png" alt="cart" class="cart-icon">
-        <span class="cart-number">0</span>
+        
+        <div class="user-interaction">
+            <div class="cart">
+                <img src="images/cart.png" alt="cart" class="cart-icon">
+                <span class="cart-number">0</span>
+            </div>
+            <div class="user">
+                <img src="images/user.jpg" alt="user" class="user-icon">
+                <span class="user-name">Login</span>
+            </div>
         </div>
-        <class="user">
-            <img src="images/user.jpg" alt="user" class="user-icon">
-            <span class="user-name">Login</span>
-        </div>
-
     </nav>
 
     <header class="header-section">
         <h1 class="header-heading"><span> Cozy Threads</span></h1>
     </header>
+    <h1 class="section-heading">Statement and some icon design </h1>
     <section class="Best-Sellers">
-    <h1 class="section-heading">Best Sellers</h1>
+        <h1 class="section-heading">Best Sellers</h1>
 
-    <div class="carousel-container">
-    <div class ="products">
-        <div class ="product-box">
-            <img src="images/shirt.jpg" alt="product" class="product-image">
-            <h2 class="product-name">Product 1</h2>
-            <p class="product-price">$20.00</p>
-            <button class="add-to-cart">Add to Cart</button>
+        <div class="carousel-container">
+            <div class="products">
+                <div class="product-box">
+                    <img src="images/shirt.jpg" alt="product" class="product-image">
+                    <h2 class="product-name">Product 1</h2>
+                    <p class="product-price">$20.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-box">
+                    <img src="images/shirt.jpg" alt="product" class="product-image">
+                    <h2 class="product-name">Product 1</h2>
+                    <p class="product-price">$20.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-box">
+                    <img src="images/shirt.jpg" alt="product" class="product-image">
+                    <h2 class="product-name">Product 1</h2>
+                    <p class="product-price">$20.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-box">
+                    <img src="images/shirt.jpg" alt="product" class="product-image">
+                    <h2 class="product-name">Product 1</h2>
+                    <p class="product-price">$20.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-box">
+                    <img src="images/shirt.jpg" alt="product" class="product-image">
+                    <h2 class="product-name">Product 1</h2>
+                    <p class="product-price">$20.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-box">
+                    <img src="images/shirt.jpg" alt="product" class="product-image">
+                    <h2 class="product-name">Product 1</h2>
+                    <p class="product-price">$20.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
         </div>
-        <div class ="product-box">
-            <img src="images/shirt.jpg" alt="product" class="product-image">
-            <h2 class="product-name">Product 1</h2>
-            <p class="product-price">$20.00</p>
-            <button class="add-to-cart">Add to Cart</button>
+    </section>
+
+    <div class="styled">
+        <h1 class="section-heading">Styled</h1>
+        <h1 class="section-heading">Follow Us @CozyThreads</h1>
+    <a href="https://www.instagram.com/" class="instagram social"><i class="fa fa-instagram"></i></a>
+
+  <div class="FollowUs">
+    <section class="social-media-gallery">
+        <div class="social-image">
+            <img src="images/socialmedia1.jpg" alt="Social Image 1">
         </div>
-        <div class ="product-box">
-            <img src="images/shirt.jpg" alt="product" class="product-image">
-            <h2 class="product-name">Product 1</h2>
-            <p class="product-price">$20.00</p>
-            <button class="add-to-cart">Add to Cart</button>
+        <div class="social-image">
+            <img src="images/image2.jpg" alt="Social Image 2">
         </div>
-    </div>
-</section>
-<footer>Made by Chloe Gamber</footer>
-<script src="js/home.
+        <div class="social-image">
+            <img src="images/image3.jpg" alt="Social Image 3">
+        </div>
+        <div class="social-image">
+            <img src="images/image4.jpg" alt="Social Image 4">
+        </div>
+        <div class="social-image">
+            <img src="images/image5.jpg" alt="Social Image 5">
+        </div>
+        <div class="social-image">
+            <img src="images/image6.jpg" alt="Social Image 6">
+        </div>
+    </section>
+    
+    <footer>Made by Chloe Gamber</footer>
+    
+    <script src="js/home.js"></script>
+
 </body>
 </html>
