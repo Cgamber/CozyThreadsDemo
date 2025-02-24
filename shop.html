@@ -12,24 +12,55 @@
     <link rel="stylesheet" href="css/style.css"> 
 </head>
 
-  <nav class = "navbar">
-        <ul class="links-container">
-            <li class ="link-item"><a href="index.html"class="link">Home</a></li>
-            <li class ="link-item"><a href="#"class="link">About</a></li>
-            <li class ="link-item"><a href="shop.html"class="link">Shop</a></li>
-            <li class ="link-item"><a href="#"class="link">Contact</a></li> 
-        </ul>
-<div class ="user-interaction">
-    <div class="cart">
-        <img src="images/cart.png" alt="cart" class="cart-icon">
-        <span class="cart-number">0</span>
+<nav class="navbar">
+    <ul class="links-container">
+        <li class="link-item"><a href="index.html" class="link">Home</a></li>
+        <li class="link-item"><a href="about.html" class="link">About</a></li>
+        <li class="link-item">
+            <a href="shop.html" class="link">Shop</a>
+            <!-- Dropdown Menu -->
+            <div class="dropdown">
+                <div class="dropdown-column">
+                    <h4>Featured</h4>
+                    <a href="#">Best Sellers</a>
+                    <a href="#">New Arrivals</a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>Category</h4>
+                    <a href="#">Shop All</a>
+                    <a href="#">Tops + Blouses</a>
+                    <a href="#">Tees</a>
+                    <a href="#">Pants</a>
+                    <a href="#">Jackets + Outerwear</a>
+                    <a href="#">Pullovers</a>
+                    <a href="#">Dresses + Jumpsuits</a>
+                    <a href="#">Shorts + Skirts</a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>More</h4>
+                    <a href="#">Accessories</a>
+                </div>
+                <div class="dropdown-images">
+                    <img src="images/top.jpg" alt="Tops">
+                    <img src="images/pants.jpg" alt="Pants">
+                </div>
+            </div>
+        </li>
+        <li class="link-item"><a href="#" class="link">Sustainability</a></li> 
+    </ul>
+    
+    <div class="user-interaction">
+        <div class="cart">
+            <img src="images/cart.png" alt="cart" class="cart-icon">
+            <span class="cart-number">0</span>
         </div>
-        <class="user">
+        <div class="user">
             <img src="images/user.jpg" alt="user" class="user-icon">
             <span class="user-name">Login</span>
         </div>
+    </div>
+</nav>
 
-    </nav>
 <body>
     <section class="product-details">
         <img src="images/shirt.jpg" alt="shirt" class="product-image">
