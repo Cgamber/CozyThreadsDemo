@@ -267,6 +267,43 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s;
 }
+.styled-images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 3 images per row */
+    gap: 20px; /* Reduced gap to minimize whitespace */
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    width: 100%; /* Take up full available width */
+    max-width: 1600px; /* Max width to prevent images from being too small */
+    margin: 0 auto; /* Center the grid */
+}
+
+.styled-images img {
+    width: 100%; /* Make images fill the grid */
+    height: auto;
+    max-height: 600px; /* Adjust height to fit proportions */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.styled-images img:hover {
+    transform: scale(1.08); /* Slight zoom effect on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .styled-images {
+        grid-template-columns: repeat(2, 1fr); /* Show 2 images per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .styled-images {
+        grid-template-columns: repeat(1, 1fr); /* Show 1 image per row */
+    }
+}
+
 
 .add-to-cart:hover {
     background-color: #555;
@@ -300,15 +337,14 @@ body {
     height: auto;
 }
 
-/* Show the overlay with logo on hover */
-.social-image:hover .overlay {
-    opacity: 1;
+.social-media img {
+    width: 80px; /* Adjust size of social media icons */
+    height: 80px;
+    transition: filter 0.3s ease-in-out;
 }
 
-/* Optional: Zoom effect on image hover */
-.social-image:hover img {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
+.social-media img:hover {
+    filter: brightness(0); /* Turns black on hover */
 }
 .footer {
     width: 100%;
