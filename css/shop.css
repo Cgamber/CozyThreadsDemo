@@ -15,19 +15,18 @@ body {
 
 .product-details {
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Stack image and product details */
     align-items: center;
-    flex-direction: column;  /* Stack the image and product details */
-    height: 100vh; /* Full viewport height */
     text-align: center;
+    height: auto;
+    padding: 20px;
 }
 
 .product-image {
-    max-width: 100%;
-    height: auto;
-    max-height: 400px; /* Ensure the image doesn't grow too large */
-    object-fit: contain;
-    margin-bottom: 20px; /* Space between image and product details */
+    width: 250px; /* Medium size */
+    height: 250px;
+    object-fit: cover; /* Ensure the image maintains aspect ratio */
+    margin-bottom: 20px; /* Space between image and text */
 }
 
 .productdetail {
@@ -56,8 +55,10 @@ body {
 
 .btn-container {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .btn {
@@ -69,6 +70,8 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    width: 200px; /* Ensures uniform button width */
+    text-align: center;
 }
 
 .btn:hover {

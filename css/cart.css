@@ -1,0 +1,39 @@
+.cart-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack elements vertically */
+    height: 100vh; /* Ensure it takes full height of the viewport */
+    text-align: center;
+}
+
+.product-list {
+    width: 70%;
+}
+.sm-product-img {
+    width: 100%; /* Ensure it is not being restricted */
+    height: auto; /* Maintain aspect ratio */
+}
+.section-heading {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 20px 0;
+    text-transform: capitalize;
+    text-align: center;
+}
+.empty-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.cart-container {
+    width: 100%;
+    max-width: 600px;            /* Optional: limit the cart container width */
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #d8d8d8;
+    background-color: #fff;      /* Background color for the cart */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}

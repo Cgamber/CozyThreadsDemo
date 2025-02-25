@@ -20,3 +20,24 @@ function moveCarousel() {
 
 // Set interval to move the carousel every 3 seconds
 setInterval(moveCarousel, 3000);
+
+
+const add_product_to_cart= product => {
+    let cart= JSON.parse(localStorage.getItem('cart'));
+
+    if(cart == null) 
+    {
+        cart = [];
+    }
+    product = {
+        item:1,
+        name:product.name,
+        price:product.price,
+        shortDes:product.shortDes,
+        image: product.image
+    }
+
+    cart.push(product);
+    location.setItem('cart', JSON.stringify(cart));
+    return 'added';
+}
