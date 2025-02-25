@@ -48,4 +48,5 @@ document.querySelectorAll('.buy-now').forEach(button => {
             alert('Please add an item to your cart before proceeding!');
         }
     });
+    
 });

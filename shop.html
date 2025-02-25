@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CozyThreads-Shop</title>
     <link rel="stylesheet" href="css/style.css">
@@ -11,91 +10,61 @@
 
 <body>
     <nav class="navbar">
-        <nav class="navbar">
-            <ul class="links-container">
-                <li class="link-item"><a href="index.html" class="link">Home</a></li>
-                <li class="link-item"><a href="about.html" class="link">About</a></li>
-                <li class="link-item">
-                    <a href="shop.html" class="link">Shop</a>
-                    <!-- Dropdown Menu -->
-                    <div class="dropdown">
-                        <div class="dropdown-column">
-                            <h4>Featured</h4>
-                            <a href="#">Best Sellers</a>
-                            <a href="#">New Arrivals</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <h4>Category</h4>
-                            <a href="#">Shop All</a>
-                            <a href="#">Tops + Blouses</a>
-                            <a href="#">Tees</a>
-                            <a href="#">Pants</a>
-                            <a href="#">Jackets + Outerwear</a>
-                            <a href="#">Pullovers</a>
-                            <a href="#">Dresses + Jumpsuits</a>
-                            <a href="#">Shorts + Skirts</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <h4>More</h4>
-                            <a href="#">Accessories</a>
-                        </div>
-                        <div class="dropdown-images">
-                            <img src="images/top.jpg" alt="Tops">
-                            <img src="images/pants.jpg" alt="Pants">
-                        </div>
-                    </div>
-                </li>
-                <li class="link-item"><a href="sustainability.html" class="link">Sustainability</a></li>
-            </ul>
-            
-            <div class="user-interaction">
-                <div class="cart">
-                    <img src="images/cart.png" alt="cart" class="cart-icon">
-                    <span class="cart-number">0</span>
-                </div>
-                <div class="user">
-                    <img src="images/user.jpg" alt="user" class="user-icon">
-                    <span class="user-name">Login</span>
-                </div>
+        <ul class="links-container">
+            <li class="link-item"><a href="index.html" class="link">Home</a></li>
+            <li class="link-item"><a href="about.html" class="link">About</a></li>
+            <li class="link-item">
+                <a href="shop.html" class="link">Shop</a>
+            </li>
+            <li class="link-item"><a href="sustainability.html" class="link">Sustainability</a></li>
+        </ul>
+        <div class="user-interaction">
+            <div class="cart">
+                <img src="images/cart.png" alt="cart" class="cart-icon">
+                <span class="cart-number" id="cart-count">0</span>
             </div>
-        </nav>
+        </div>
     </nav>
 
     <section class="product-details">
-        <!-- Product 1 -->
         <div class="product" id="product1">
             <img src="images/shirt.jpg" alt="shirt" class="product-image">
             <div class="product-info">
                 <h1 class="product-title" data-name="Shirt">Shirt</h1>
-                <p class="product-description">This is a shirt</p>
                 <p class="product-price" data-price="20.00">$20.00</p>
                 <button class="btn add-to-cart">Add to Cart</button>
-                <button class="btn buy-now">Buy Now</button>
             </div>
         </div>
     
-        <!-- Product 2 -->
         <div class="product" id="product2">
             <img src="images/pants.jpg" alt="pants" class="product-image">
             <div class="product-info">
                 <h1 class="product-title" data-name="Pants">Pants</h1>
-                <p class="product-description">These are comfy pants</p>
                 <p class="product-price" data-price="25.00">$25.00</p>
                 <button class="btn add-to-cart">Add to Cart</button>
-                <button class="btn buy-now">Buy Now</button>
             </div>
         </div>
     </section>
-    
-    <div class="cart">
-        <img src="images/cart.png" alt="cart" class="cart-icon">
-        <span class="cart-number" id="cart-count">0</span>
-    </div>
-    
-    </section>
 
     <footer>Made by Chloe Gamber</footer>
-
     <script src="js/shop.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let cartCount = document.getElementById("cart-count");
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cartCount.textContent = cart.length;
+            
+            document.querySelectorAll(".add-to-cart").forEach(button => {
+                button.addEventListener("click", function () {
+                    let product = this.parentElement;
+                    let productName = product.querySelector(".product-title").dataset.name;
+                    let productPrice = product.querySelector(".product-price").dataset.price;
+                    cart.push({ name: productName, price: productPrice });
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    cartCount.textContent = cart.length;
+                });
+            });
+        });
+    </script>
 </body>
 </html>
