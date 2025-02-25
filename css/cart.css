@@ -130,4 +130,12 @@
     color:#fff;
     text-align: center ;
     line-height: 40px;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+.total{
+    font-size: 60px;
+    font-weight: 500px;
+    margin: 10px 0;
+
 }
