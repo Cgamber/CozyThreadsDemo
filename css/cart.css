@@ -2,38 +2,89 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Stack elements vertically */
-    height: 100vh; /* Ensure it takes full height of the viewport */
+    flex-direction: column;
+    height: 100vh;
     text-align: center;
 }
 
-.product-list {
-    width: 70%;
-}
-.sm-product-img {
-    width: 100%; /* Ensure it is not being restricted */
-    height: auto; /* Maintain aspect ratio */
-}
 .section-heading {
-    font-size: 30px;
-    font-weight: 500;
-    margin: 20px 0;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
     text-transform: capitalize;
-    text-align: center;
-}
-.empty-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
 }
 
 .cart-container {
-    width: 100%;
-    max-width: 600px;            /* Optional: limit the cart container width */
+    width: 60%;
+    max-width: 600px;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 1px solid #d8d8d8;
-    background-color: #fff;      /* Background color for the cart */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sm-product {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.sm-product-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.sm-text {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.sm-product-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.sm-des {
+    font-size: 14px;
+    color: #888;
+}
+
+.item-counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.counter-btn {
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: none;
+    border-radius: 5px;
+}
+
+.item-count {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Ensure visibility of an empty cart image */
+.empty-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
 }
