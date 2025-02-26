@@ -1,70 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CozyThreads-Shop</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/shop.css">
-</head>
-
-<body>
-    <nav class="navbar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop</title>
+    <!-- Link To CSS -->
+    
+    <link rel="stylesheet" href="css/shop.css" />
+    <!-- Box Icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <!-- Nav -->
+      <nav class="navbar">
         <ul class="links-container">
             <li class="link-item"><a href="index.html" class="link">Home</a></li>
             <li class="link-item"><a href="about.html" class="link">About</a></li>
             <li class="link-item">
                 <a href="shop.html" class="link">Shop</a>
+                <!-- Dropdown Menu -->
+                <div class="dropdown">
+                    <div class="dropdown-column">
+                        <h4>Featured</h4>
+                        <a href="#">Best Sellers</a>
+                        <a href="#">New Arrivals</a>
+                    </div>
+                    <div class="dropdown-column">
+                        <h4>Category</h4>
+                        <a href="#">Shop All</a>
+                        <a href="#">Tops + Blouses</a>
+                        <a href="#">Tees</a>
+                        <a href="#">Pants</a>
+                        <a href="#">Jackets + Outerwear</a>
+                        <a href="#">Pullovers</a>
+                        <a href="#">Dresses + Jumpsuits</a>
+                        <a href="#">Shorts + Skirts</a>
+                    </div>
+                    <div class="dropdown-column">
+                        <h4>More</h4>
+                        <a href="#">Accessories</a>
+                    </div>
+                    <div class="dropdown-images">
+                        <img src="images/top.jpg" alt="Tops">
+                        <img src="images/pants.jpg" alt="Pants">
+                    </div>
+                </div>
             </li>
             <li class="link-item"><a href="sustainability.html" class="link">Sustainability</a></li>
         </ul>
-        <div class="user-interaction">
-            <div class="cart">
-                <img src="images/cart.png" alt="cart" class="cart-icon">
-                <span class="cart-number" id="cart-count">0</span>
-            </div>
-        </div>
     </nav>
-
-    <section class="product-details">
-        <div class="product" id="product1">
-            <img src="images/shirt.jpg" alt="shirt" class="product-image">
-            <div class="product-info">
-                <h1 class="product-title" data-name="Shirt">Shirt</h1>
-                <p class="product-price" data-price="20.00">$20.00</p>
-                <button class="btn add-to-cart">Add to Cart</button>
-            </div>
+        <!-- Cart Icon -->
+        <i class="bx bx-shopping-bag" id="cart-icon" data-quantity="0"></i>
+        <!-- cart -->
+        <div class="cart">
+          <h2 class="cart-title">Your Cart</h2>
+          <!-- Content -->
+          <div class="cart-content"></div>
+          <!-- Total -->
+          <div class="total">
+            <div class="total-title">Total</div>
+            <div class="total-price">$0</div>
+          </div>
+          <!-- Buy Button -->
+          <button type="button" class="btn-buy">Pay Now</button>
+          <!-- Close Cart -->
+          <i class="bx bx-x" id="close-cart"></i>
         </div>
-    
-        <div class="product" id="product2">
-            <img src="images/pants.jpg" alt="pants" class="product-image">
-            <div class="product-info">
-                <h1 class="product-title" data-name="Pants">Pants</h1>
-                <p class="product-price" data-price="25.00">$25.00</p>
-                <button class="btn add-to-cart">Add to Cart</button>
-            </div>
+      </div>
+    </header>
+    <!-- Products -->
+    <section class="shop container">
+      <h2 class="section-title">Shop Products</h2>
+      <!-- Shop Content -->
+      <div class="shop-content">
+        <!-- Box 1 -->
+        <div class="product-box">
+          <img
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEiKbw2LYrLrzrmOmkp5a7F5rwpxOVcGxcbis4f4MGR_k1E_YBbqnk8rA-5xU9n5zVskSfnbWdLjJ-wz7o3EstZjKjmAHuYjKbc7C_LSiBtpFRgncdO9t-SRXGun4grrptwsO7_tXhlo3YqOPUGI21ZWlfNVCYobOn4YW33qI6X9GIpkb13D7Zkzn841UXym"
+            alt=""
+            class="product-img"
+          />
+          <h2 class="product-title">Casual Slit Top Pants Set </h2>
+          <span class="price">$80</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
         </div>
+        <!-- Box 2 -->
+        <div class="product-box">
+          <img
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEijaTB2vqmaR9zpOjVIXCqTuwMkXw1YAP0w2QKplcG5d6Z0SpNjIoYM0_A9ATVs_N2oufIc_0590HB8bJAlf1x6-nWlQW7840u2ZUd3GpmBu7444sMEq0OcfpEJ7R_pGRRNJmaN_6Nzi57rxXtM95NTHp2DRl9dIRWPKoPaAoAjNtvsJvhXzFRCrzuv85zX"
+            alt=""
+            class="product-img"
+          />
+          <h2 class="product-title">Elegant Waist dress</h2>
+          <span class="price">$70.99</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
+        </div>
+        <!-- Box 3 -->
+        <div class="product-box">
+          <img
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEjIxtKtij0LdsXuNcs2ImnuzbY7LkvwhvpXwgy_8pr_5xsyIs93H05V9Kvs9SDVWQL6qtqHNdgmgh1Q3QInHbb7iuMcSq2wUmbUob52u5n_Eh0BvxX38pGrk8HktneKgkS6MKaD4nOMk9D2dFuwhUY7SD9TYFLkV_k_TsAnSudOP38WtN1WuDURWAdRf_5L"
+            alt=""
+            class="product-img"
+          />
+          <h2 class="product-title">Casual Jumpsuit</h2>
+          <span class="price">$24.98</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
+        </div>
+        <!-- Box 4 -->
+        <div class="product-box">
+          <img
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEjdQ1gKHj_I7mcFyBTfsntGrVZuhqZQhRMaYxiG8D3z5NFMmVbc72WH06PeXmyH66xxEM_OguKvJ06dJeuMkpAVwwj2iQk9-3_GJipwRvAb8vHXzD2I0TSX0Puz82hLGWLx-lD7dfQ5GOsCuDQNFMDZce81ZG3s1dUJ0DPHVjbDMtcD1SJxb1iC0K9Yi0zb"
+            alt=""
+            class="product-img"
+          />
+          <h2 class="product-title">Mens V Neck Polo</h2>
+          <span class="price">$50</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
+        </div>
+        <!-- Box 5 -->
+        <div class="product-box">
+          <img
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEjmJnjzCzrmpBWqlI4TwwFGPmrxr2k8p12dUiTtQbg7XAQtKoD0wDyfzudwbIx0kNlscNE94WMM1Ww64Mn1gdfrUsGiwdBF1igsdORBd90-Of_xDzWp0s8Mt5tG0iUl0F97mC4KU3W6yMHvY8PHWkTdjd_ltlFTnyruHHjAW5z1OOd7vVsjm-XdpVrh85MG"
+            alt=""
+            class="product-img"
+          />
+          <h2 class="product-title">Soft Pullover</h2>
+          <span class="price">$80.50</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
+        </div>
+        <!-- Box 6 -->
+        <div class="product-box">
+          <img
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEiyFe7fJZLntn52QNvJYmeozA_Z-Q5yX9c-7qVmnkULKy0g8z_DTMeT_hvTE18ia6v3Xpu-hivjCBspq8yLJBTBydCmqq5gWeNpAwEiEE6HAn-BUDjkrfRLq45Hevu5yAmDIEBV6e-rFc_k7jPQiJmlBIqmTVEGK4-BanB1zYPljm20fcKnz0B8P7XyGZ0G"
+            class="product-img"
+          />
+          <h2 class="product-title">ADIDAS EARBUDS</h2>
+          <span class="price">$60</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
+        </div>
+        <!-- Box 7 -->
+        <div class="product-box">
+          <img
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEjm13uQ1H6OCbmPB2ewMvmNW-DRP1BxpdwZ2b5HkPatCz9Wql9bYYxhx51rOrm8y2IIC4006C8JX4ki7L9dNgvSiy35kHUdPYKMImd4iN9kEyC0HJgcEiMeshKcc20cIQMmVi86Xlkv6OCt_5Lw6ZDoATjpiv9ZhcvA7zU5keyg5_qEzU9vDKPStnaIjUIt"
+            alt=""
+            class="product-img"
+          />
+          <h2 class="product-title">Men's Leather belt Style 1</h2>
+          <span class="price">$40</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
+        </div>
+        <!-- Box 8 -->
+        <div class="product-box">
+          <img
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEj7gMrs6tUs5ss6cbq4_7ccKzWk9wOCliMtS6VekpspIcTKk33lBOho0cxxzuxqU_VmMhjhFnvI7A8mcTqeVVuhL_4eJ8_8IOwchay-aSBQ1BoaaVF--9EbiA_auvGU66J1-5RzPEJH2Aly2otPUo4BWrdM2onWkGp1tBOyf66LfBYvBZ1doyeuKNrT8enn"
+            alt=""
+            class="product-img"
+          />
+          <h2 class="product-title">Suede Belt</h2>
+          <span class="price">$20</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
+        </div>
+      </div>
     </section>
-
-    <footer>Made by Chloe Gamber</footer>
-    <script src="js/shop.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let cartCount = document.getElementById("cart-count");
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            cartCount.textContent = cart.length;
-            
-            document.querySelectorAll(".add-to-cart").forEach(button => {
-                button.addEventListener("click", function () {
-                    let product = this.parentElement;
-                    let productName = product.querySelector(".product-title").dataset.name;
-                    let productPrice = product.querySelector(".product-price").dataset.price;
-                    cart.push({ name: productName, price: productPrice });
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    cartCount.textContent = cart.length;
-                });
-            });
-        });
-    </script>
-</body>
+    <!-- Link To JS -->
+    <script src="js/test.js"></script>
+    <script src="js/cart.js"></script>
+  </body>
 </html>

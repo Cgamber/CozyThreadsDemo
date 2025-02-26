@@ -141,26 +141,6 @@ body {
     justify-content: space-between;
 }
 
-.cart, .user {
-    display: flex;
-    align-items: center;
-}
-
-.cart-icon, .user-icon {
-    width: 30px;
-    height: 30px;
-    height: auto; /* Keep the aspect ratio intact */
-    margin-right: 8px; /* Optional: Space between image and text */
-    cursor: pointer; /* Change cursor to pointer on hover */
-}
-
-/* Optional: Style for the cart number and user name */
-.cart-number, .user-name {
-    font-size: 16px; /* Adjust the text size to match the smaller images */
-}
-
-
-
 .header-section {
     width: 100%;
     min-height: 100vh;
