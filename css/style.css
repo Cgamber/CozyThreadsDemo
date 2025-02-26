@@ -437,4 +437,11 @@ footer {
     border: none;
     margin-right: 10px;
 }
-
+.newsletter button {
+    background-color: #E74C3C;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
