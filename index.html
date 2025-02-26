@@ -16,14 +16,7 @@
             box-sizing: border-box;
         }
 
-        .navbar {
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            position: relative;
-        }
+    
 
         .links-container {
             list-style: none;
@@ -44,19 +37,7 @@
         }
 
         /* Dropdown Styling */
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 600px;
-            background: white;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            display: none;
-            padding: 20px;
-            z-index: 10;
-            display: flex;
-        }
-
+     
         .link-item:hover .dropdown {
             display: flex;
         }
@@ -94,7 +75,25 @@
     </style>
 </head>
 <body>
-
+     <!-- Cart Icon -->
+     <i class="bx bx-shopping-bag" id="cart-icon" data-quantity="0"></i>
+     <!-- cart -->
+     <div class="cart">
+       <h2 class="cart-title">Your Cart</h2>
+       <!-- Content -->
+       <div class="cart-content"></div>
+       <!-- Total -->
+       <div class="total">
+         <div class="total-title">Total</div>
+         <div class="total-price">$0</div>
+       </div>
+       <!-- Buy Button -->
+       <button type="button" class="btn-buy">Pay Now</button>
+       <!-- Close Cart -->
+       <i class="bx bx-x" id="close-cart"></i>
+     </div>
+   </div>
+ </header>
     <nav class="navbar">
         <ul class="links-container">
             <li class="link-item"><a href="index.html" class="link">Home</a></li>
@@ -226,7 +225,8 @@
     
     <footer>Made by Chloe Gamber</footer>
     
-    <script src="js/home.js"></script>
+    <script src="index.js"></script>
+    <script src="js/cart.js"></script>
 
 </body>
 </html>
