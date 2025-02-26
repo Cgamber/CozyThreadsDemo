@@ -1,55 +1,50 @@
-const products = document.querySelector('.products');
-let productIndex = 0; // Start from the first product
-const totalProducts = document.querySelectorAll('.product-box').length;
+require('dotenv').config();
+const express = require('express');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Correct way to use environment variable
+const app = express();
 
-function moveCarousel() {
-    const productWidth = document.querySelector('.product-box').offsetWidth;
+app.use(express.static('public'));
+app.use(express.json());
 
-    // Move the carousel to the next product
-    productIndex++;
+// Route for creating Stripe Checkout session
+app.post('/create-checkout-session', async (req, res) => {
+    try {
+        const { cartItems } = req.body; // cartItems should be passed from the frontend
 
-    // If we reach the last product, reset to the first
-    if (productIndex === totalProducts) {
-        productIndex = 0;
+        // Map cartItems to Stripe line_items
+        const lineItems = cartItems.map(item => {
+            return {
+                price_data: {
+                    currency: 'usd',
+                    product_data: {
+                        name: item.name,
+                        images: [item.image], // assuming item has an image URL
+                    },
+                    unit_amount: parseInt(item.price * 100), // Convert price to cents
+                },
+                quantity: item.item,
+            };
+        });
+
+        // Create Checkout Session
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: lineItems,
+            mode: 'payment',
+            success_url: `${process.env.DOMAIN}/success`, // Define success URL
+            cancel_url: `${process.env.DOMAIN}/cancel`,   // Define cancel URL
+            billing_address_collection: 'required',
+        });
+
+        // Respond with the session ID so frontend can redirect to Stripe
+        res.json({ id: session.id });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
     }
+});
 
-    // Apply the translation to move the carousel
-    products.style.transition = 'transform 0.5s ease';  // Add transition for smooth sliding
-    products.style.transform = `translateX(-${productIndex * productWidth}px)`;
-}
-
-// Set interval to move the carousel every 3 seconds
-setInterval(moveCarousel, 3000);
-
-// Add product to cart
-const add_product_to_cart = product => {
-    // Retrieve the cart from localStorage, or initialize it as an empty array if it doesn't exist
-    let cart = JSON.parse(localStorage.getItem('cart'));
-
-    if (cart === null) {
-        cart = []; // If no cart exists, initialize an empty array
-    }
-
-    // Check if the product is already in the cart
-    const existingProductIndex = cart.findIndex(item => item.name === product.name);
-
-    if (existingProductIndex >= 0) {
-        // If the product exists, increase its quantity
-        cart[existingProductIndex].item += 1;
-    } else {
-        // If the product doesn't exist, add it to the cart
-        const newProduct = {
-            item: 1,
-            name: product.name,
-            price: product.price,
-            shortDes: product.shortDes,
-            image: product.image
-        };
-        cart.push(newProduct);
-    }
-
-    // Save the updated cart back to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-
-    return 'added';  // Return a confirmation message
-};
+// Start the server
+app.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000');
+});
