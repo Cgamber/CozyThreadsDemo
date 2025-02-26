@@ -394,9 +394,47 @@ body {
 .social-media img:hover {
     filter: brightness(0); /* Turns black on hover */
 }
-.footer {
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+footer {
+    background-color: #2D3237; /* Dark background */
+    color: #FFFFFF; /* White text */
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-family: Arial, sans-serif;
 }
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+.footer-section h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #FFFFFF;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+.footer-section ul li a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.footer-section ul li a:hover {
+    opacity: 1;
+}
+.newsletter input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    margin-right: 10px;
+}
+

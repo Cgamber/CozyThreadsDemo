@@ -14,19 +14,16 @@
 
 /* Navbar styling */
 .navbar {
-  width: 100%;
-  height: 80px;
-  position: fixed;
-  top: 0;
-  left: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   z-index: 9;
-  transition: 0.5s;
-  background-color: white; /* White background for the navbar */
-  border: 2px solid white; /* White border around the navbar */
+    transition: 0.5s;
+    background-color: white; /* White background for the navbar */
+    border: 2px solid white; 
+
 }
+
 /* Links container */
 .links-container {
   list-style-type: none;
@@ -58,69 +55,6 @@
   background-color:hsla(0, 0%, 98%, 0.1) /* Light beige background color on hover */
    /* Change text color on hover for contrast */
 }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-    
-
-        .links-container {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .link-item {
-            position: relative;
-        }
-
-        .link {
-            text-decoration: none;
-            color: #333;
-            font-size: 18px;
-            padding: 10px;
-            display: block;
-        }
-
-        /* Dropdown Styling */
-     
-        .link-item:hover .dropdown {
-            display: flex;
-        }
-
-        .dropdown-column {
-            flex: 1;
-            padding: 10px;
-        }
-
-        .dropdown-column h4 {
-            font-size: 16px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .dropdown-column a {
-            text-decoration: none;
-            display: block;
-            color: #666;
-            font-size: 14px;
-            padding: 5px 0;
-        }
-
-        .dropdown-images {
-            flex: 1;
-            text-align: center;
-        }
-
-        .dropdown-images img {
-            width: 100%;
-            max-width: 150px;
-            display: block;
-            margin: 10px auto;
-        }
 
 /* Ensuring no margin/padding on ul */
 .navbar ul {
@@ -472,5 +406,70 @@ header {
   }
   .cart {
     width: 100%;
+  }
+}
+footer {
+  background-color: #2D3237; /* Dark background */
+  color: #FFFFFF; /* White text */
+  padding: 40px 80px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+}
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 20px;
+}
+.footer-section h4 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #FFFFFF;
+}
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+.footer-section ul li a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: 14px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+.footer-section ul li a:hover {
+  opacity: 1;
+}
+.newsletter input {
+  width: 70%;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  margin-right: 10px;
+}
+.newsletter button {
+  background-color: #E74C3C;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.newsletter button:hover {
+  background-color: #C0392B;
+}
+
+@media (max-width: 768px) {
+  footer {
+      flex-direction: column;
+      text-align: center;
+  }
+  .newsletter input {
+      width: 100%;
+      margin-bottom: 10px;
   }
 }
