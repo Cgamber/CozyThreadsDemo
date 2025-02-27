@@ -73,8 +73,28 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+/* contianer is for about page */
+.container {
+    margin-top: 180px; 
+    padding-top: 100px;
+    position: relative;
+    top: 100px;
+}
 
+.about-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 2s ease-in-out, transform 1.5s ease-in-out;
+}
 
+.about-image.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 .links-container {
     list-style: none;
