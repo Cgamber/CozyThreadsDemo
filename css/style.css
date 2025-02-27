@@ -80,7 +80,27 @@ body {
     position: relative;
     top: 100px;
 }
+/* cozy threads text image on home */
+.overlay-image {
+    position: absolute;
+    top: 50%; /* Adjust the position as needed */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the image */
+    max-width: 80%; /* Adjust the size as needed */
+    height: auto;
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 2s ease-out forwards; /* Fade-in effect */
+}
 
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* Start fully transparent */
+    }
+    100% {
+        opacity: 1; /* End fully visible */
+    }
+}
 .about-image {
     width: 100%;
     max-width: 600px;
