@@ -407,68 +407,48 @@ header {
     width: 100%;
   }
 }
-footer {
-  background-color: #2D3237; /* Dark background */
-  color: #FFFFFF; /* White text */
-  padding: 40px 80px;
+.footer {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  font-family: Arial, sans-serif;
-}
-.footer-section {
-  flex: 1;
-  min-width: 250px;
-  margin-bottom: 20px;
-}
-.footer-section h4 {
-  font-size: 16px;
-  margin-bottom: 12px;
-  color: #FFFFFF;
-}
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-.footer-section ul li {
-  margin-bottom: 8px;
-}
-.footer-section ul li a {
-  text-decoration: none;
-  color: #FFFFFF;
-  font-size: 14px;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
-.footer-section ul li a:hover {
-  opacity: 1;
-}
-.newsletter input {
-  width: 70%;
-  padding: 10px;
-  border-radius: 4px;
-  border: none;
-  margin-right: 10px;
-}
-.newsletter button {
-  background-color: #E74C3C;
+  align-items: flex-start; /* Align items to the top */
+  justify-content: space-between; /* Spread out elements evenly */
+  padding: 20px 40px; /* Adjust padding for spacing */
+  background-color: #2b2e31; /* Dark background */
   color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.newsletter button:hover {
-  background-color: #C0392B;
 }
 
-@media (max-width: 768px) {
-  footer {
-      flex-direction: column;
-      text-align: center;
-  }
-  .newsletter input {
-      width: 100%;
-      margin-bottom: 10px;
-  }
+.footer-logo {
+  max-width: 100px; /* Adjust logo size */
+}
+
+.footer-container {
+  display: flex;
+  flex: 1;
+  justify-content: space-between; /* Distribute columns evenly */
+  gap: 40px; /* Reduce gap between columns */
+}
+.footer a {
+  color: white; /* Makes hyperlinks white */
+  text-decoration: none; /* Removes underline */
+  transition: color 0.3s ease-in-out;
+}
+
+.footer a:hover {
+  color: #d1d1d1; /* Slightly lighter color on hover for better UX */
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Reduce space between text lines */
+}
+
+.footer-column h3 {
+  font-size: 1rem;
+  margin-bottom: 8px; /* Reduce space below headings */
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.875rem;
+  padding-top: 10px; /* Reduce gap above copyright text */
 }
