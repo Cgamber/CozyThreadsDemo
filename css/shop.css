@@ -144,9 +144,8 @@ header {
   padding: 20px 0;
 }
 .logo {
-  font-size: 1.1rem;
-  color: var(--bg-color);
-  font-weight: 600;
+  height: 80px; /* Adjust as needed */
+  margin-right: 20px;
 }
 #cart-icon {
   position: relative;
