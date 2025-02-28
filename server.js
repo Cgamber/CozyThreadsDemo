@@ -1,52 +1,42 @@
 const express = require("express");
 const cors = require("cors");
-const stripe = require("stripe")("sk_test_your_secret_key_here"); // Replace with your Stripe secret key
-
+const stripe = require("stripe")("sk_test_51Qv6HFQnWn5BcULJNzb5tmgQoIIdHGD0glzTXRpxjW0L1wyP873jX1YIElzkEUZxogGgaMJabaeF8sHVAdJZ0Bcp00YUSw7ZP3"); // Your secret Stripe key
 const app = express();
 app.use(express.json()); // To parse JSON body in POST requests
 
-// Enable CORS for your frontend hosted on AWS Amplify
+// Enable CORS for both AWS Amplify and localhost (for local development)
+const allowedOrigins = ['https://main.d1n6dnca3oybgz.amplifyapp.com', 'http://localhost:5000', null]; // Add your local development URL
+
 app.use(cors({
-  origin: 'https://main.d1n6dnca3oybgz.amplifyapp.com',  // Your frontend URL
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-// Route to handle Stripe Checkout session creation
-app.post("/stripe-checkout", async (req, res) => {
-  const { items } = req.body;
+// Route to create a payment intent
+app.post("/create-payment-intent", async (req, res) => {
+  const { amount } = req.body; // Expecting the amount from the frontend
 
   try {
-    // Map the items to Stripe line items
-    const lineItems = items.map(item => ({
-      price_data: {
-        currency: 'usd', // Currency type
-        product_data: {
-          name: item.name,  // Product name
-        },
-        unit_amount: item.price * 100, // Amount in cents (Stripe expects the amount in cents)
-      },
-      quantity: item.quantity,
-    }));
-
-    // Create a Checkout session
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: lineItems,
-      mode: 'payment',
-      success_url: 'https://main.d1n6dnca3oybgz.amplifyapp.com/success',  // Success redirect URL
-      cancel_url: 'https://main.d1n6dnca3oybgz.amplifyapp.com/cancel',  // Cancel redirect URL
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,  // Amount in cents (e.g., 5000 for $50)
+      currency: "usd",  // Currency type
     });
 
-    // Send the session URL back to the frontend
-    res.json({ sessionUrl: session.url });
+    res.json({ clientSecret: paymentIntent.client_secret });  // Send back the client secret
   } catch (error) {
-    console.error("Error creating Stripe session:", error);
-    res.status(500).send({ error: error.message });
+    res.status(500).send({ error: error.message });  // Send error if something goes wrong
   }
 });
 
-// Start the server on your desired port (e.g., port 5000)
+// Start the server on port 5000 (or your preferred port)
 app.listen(5000, () => {
   console.log("Server is running on http://localhost:5000");
 });
