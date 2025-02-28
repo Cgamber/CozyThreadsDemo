@@ -1,184 +1,129 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.logo {
-    height: 80px; /* Adjust as needed */
-    margin-right: 20px;
-}
-.logot {
-    height: 180px; /* Adjust as needed */
-   
-}
+
 /* Body styling */
 body {
     font-family: 'Cabin', sans-serif;
     height: 100vh;
+    color:#4d4747;
 }
-
-/* Navbar styling */
 .navbar {
-    width: 100%;
-    height: 80px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9;
-    transition: 0.5s;
-    background-color: white; /* White background for the navbar */
-    border: 2px solid white; /* White border around the navbar */
-}
-
-/* Links container */
-.links-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 9;
+          transition: 0.5s;
+          background-color: white; /* White background for the navbar */
+          border: 2px solid white; 
+  }
+  
+  /* Links container */
+  .links-container {
     list-style-type: none;
     display: flex;
     padding: 0;
     margin: 0;
     gap: 4rem; /* Adjust spacing between nav items */
+  }
+  .section-title {
+    color:#4d4747;
 }
-
-/* Individual nav item styling */
-.nav-item {
+  
+  /* Individual nav item styling */
+  .nav-item {
     font-size: 18px;
     font-weight: bold;
-}
-
-.link {
+  }
+  .link {
     text-decoration: none;
-    color: #F5F5DC; /* Light beige color for links */
+    color: #7a7a51; /* Light beige color for links */
     padding: 12px 20px;
-    border-radius: 0; /* Remove circular border */
-    border: 2px solid white; /* White border around each link */
-    background-color: white; /* White fill for the link's background */
+    border-radius: 50%; /* Creates the circular border effect */
+    border: 2px solid #fff; /* White border around each link */
     display: inline-block; /* Ensures that padding and border radius work */
     transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease; /* Fade, scale, and background color effects */
-}
-
-/* Hover effect for links */
-.link:hover {
+  }
+  
+  /* Hover effect for links */
+  .link:hover {
     opacity: 0.7; /* Fade effect */
     transform: scale(1.1); /* Slight zoom effect */
-    background-color: #F5F5DC; /* Light beige background color on hover */
-    color: #5f5a4f; /* Change text color on hover for contrast */
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-/* contianer is for about page */
-.container {
-    margin-top: 180px; 
-    padding-top: 100px;
-    position: relative;
-    top: 100px;
-}
-/* cozy threads text image on home */
-.overlay-image {
-    position: absolute;
-    top: 50%; /* Adjust the position as needed */
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center the image */
-    max-width: 80%; /* Adjust the size as needed */
-    height: auto;
-    opacity: 0; /* Initially hidden */
-    animation: fadeIn 2s ease-out forwards; /* Fade-in effect */
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    0% {
-        opacity: 0; /* Start fully transparent */
-    }
-    100% {
-        opacity: 1; /* End fully visible */
-    }
-}
-.about-image {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-    margin-top: 20px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 2s ease-in-out, transform 1.5s ease-in-out;
-}
-
-.about-image.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.links-container {
-    list-style: none;
+    background-color:hsla(0, 0%, 98%, 0.1) /* Light beige background color on hover */
+     /* Change text color on hover for contrast */
+  }
+  
+  /* Ensuring no margin/padding on ul */
+  .navbar ul {
     display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 600px;
+    background: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: none;
+    flex-wrap: wrap;
     gap: 20px;
-}
-
-.link-item {
-    position: relative;
-}
-
-.link {
+    z-index: 100;
+  }
+  
+  /* SHOW DROPDOWN ON HOVER */
+  .link-item:hover .dropdown {
+    display: flex;
+  }
+  
+  /* DROPDOWN COLUMNS */
+  .dropdown-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropdown-column h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .dropdown-column a {
     text-decoration: none;
     color: #333;
-    font-size: 18px;
-    padding: 10px;
-    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+  }
+  
+  .dropdown-column a:hover {
+    color: #0073e6;
+  }
+
+  .navbar .logo {
+    width: 80px; /* Smaller size for the logo */
+    height: auto;
+    transition: width 0.3s ease;
+}
+
+.navbar .logo:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
 }
 
 /* Dropdown Styling */
+.link-item {
+    position: relative;
+}
 
 .link-item:hover .dropdown {
     display: flex;
 }
 
-.dropdown-column {
-    flex: 1;
-    padding: 10px;
-}
-
-.dropdown-column h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.dropdown-column a {
-    text-decoration: none;
-    display: block;
-    color: #666;
-    font-size: 14px;
-    padding: 5px 0;
-}
-
-.dropdown-images {
-    flex: 1;
-    text-align: center;
-}
-
-.dropdown-images img {
-    width: 100%;
-    max-width: 150px;
-    display: block;
-    margin: 10px auto;
-}
-
-
-
-/* Ensuring no margin/padding on ul */
-.navbar ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-}
 .dropdown {
     position: absolute;
     top: 100%;
@@ -193,12 +138,6 @@ body {
     z-index: 100;
 }
 
-/* SHOW DROPDOWN ON HOVER */
-.link-item:hover .dropdown {
-    display: flex;
-}
-
-/* DROPDOWN COLUMNS */
 .dropdown-column {
     flex: 1;
     display: flex;
@@ -236,30 +175,12 @@ body {
     height: auto;
     border-radius: 5px;
 }
-/* Centering links in the container */
-.links-container {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-}
-.user-interactions {
-    display: flex;
-    align-items: center;
-    right: 5px;
-    top: auto;
-}
 
-.user-interaction {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
+/* Header Section */
 .header-section {
     width: 100%;
     min-height: 100vh;
-    background-image: url('../images/bck.jpg'); /* Adjusted image path */
+    background-image: url('../images/background2.jpeg'); /* Adjusted image path */
     background-size: cover;
     background-position: center;
     display: flex;
@@ -291,9 +212,10 @@ body {
     color: #F5F5DC;
 }
 
+/* Best Sellers Section */
 .Best-Sellers {
     width: 100%; 
-  padding: 50px 0;
+    padding: 50px 0;
     position: relative;
     justify-content: space-between;
 }
@@ -304,12 +226,13 @@ body {
     margin: 0 auto;
     justify-content: space-between;
 }
-.products
-{
+
+.products {
     display: flex;
     justify-content: space-between;
     gap: 25px;
 }
+
 .product-box {
     width: 300px;
     height: 450px; /* Increased height to accommodate text and button */
@@ -362,6 +285,12 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s;
 }
+
+.add-to-cart:hover {
+    background-color: #555;
+}
+
+/* Styled Images */
 .styled-images {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 3 images per row */
@@ -386,7 +315,7 @@ body {
     transform: scale(1.08); /* Slight zoom effect on hover */
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 1200px) {
     .styled-images {
         grid-template-columns: repeat(2, 1fr); /* Show 2 images per row */
@@ -399,10 +328,7 @@ body {
     }
 }
 
-
-.add-to-cart:hover {
-    background-color: #555;
-}
+/* Social Media Gallery */
 .social-media-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -427,8 +353,10 @@ body {
     filter: brightness(0.2); /* Turns image black */
     transform: scale(1.05); /* Slight zoom effect */
 }
+
+/* Social Media Icons */
 .instagram-logo {
-    width: 50px; /* You can adjust the size of the logo */
+    width: 50px; /* Adjust size of the logo */
     height: auto;
 }
 
@@ -441,6 +369,8 @@ body {
 .social-media img:hover {
     filter: brightness(0); /* Turns black on hover */
 }
+
+/* Footer */
 .footer {
     display: flex;
     align-items: flex-start; /* Align items to the top */
