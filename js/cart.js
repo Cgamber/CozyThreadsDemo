@@ -9,7 +9,7 @@ payBtn.addEventListener("click", () => {
     return;
   }
 
-  fetch("http://localhost:5000/stripe-checkout", { // Replace with your actual backend URL
+  fetch("http://localhost:5000/create-payment-intent", { // Replace with your actual backend URL
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -23,9 +23,9 @@ payBtn.addEventListener("click", () => {
       return res.json();
     })
     .then((data) => {
-      if (data.sessionUrl) {
-        location.href = data.sessionUrl; // Redirect to Stripe Checkout
-        localStorage.removeItem("cartItems"); // Clear cart after redirect
+      if (data.clientSecret) {
+        // Handle the client secret as needed
+        console.log("Client Secret:", data.clientSecret);
       } else {
         throw new Error("Invalid response from server");
       }
