@@ -1,37 +1,34 @@
 import { useState, useEffect } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "./CheckoutForm"; // Ensure this import is correct
+import CheckoutForm from "./CheckoutForm"; // Make sure this import is correct
 
 const stripePromise = loadStripe("pk_test_51Qv6HFQnWn5BcULJfLVxCZO5juXohwj7dZrGpYUjozg2bDGq0rZKPMs6MafMyEfehvUHQA3fpuVliZQm5KKrQ9yK00zxYd13SH");
 
-export default function App() {
+export default function Cart() {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    // Replace the URL with the actual backend URL
-    fetch("https://your-backend-url.com/create-payment-intent", {  // Correct the URL
+    // Fetch client secret from your backend
+    fetch("https://your-backend-url.com/stripe-checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ amount: 5000 }), // Amount in cents
-      mode: "cors",  // Make sure CORS is enabled
+      body: JSON.stringify({ amount: 5000 }), // Amount in cents (5000 = $50)
     })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Failed to fetch: ${res.statusText}`);
-        }
-        return res.json(); // Process the response as JSON
-      })
+      .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret))
       .catch((err) => console.error("Error fetching client secret:", err));
-  }, []); // Empty dependency array to run only once on mount
+  }, []);
 
   const options = clientSecret ? { clientSecret } : null;
 
   return (
     <div>
+      <h1>Cart</h1>
+      <button onClick={() => handleCheckout()}>Buy Now</button>
+
       {clientSecret ? (
         <Elements stripe={stripePromise} options={options}>
           <CheckoutForm />
@@ -41,4 +38,14 @@ export default function App() {
       )}
     </div>
   );
+
+  // Handle the checkout process
+  function handleCheckout() {
+    if (!clientSecret) {
+      console.error("Client Secret not available!");
+      return;
+    }
+    // Trigger the payment flow (this might be triggered inside CheckoutForm)
+    console.log("Proceeding to checkout...");
+  }
 }
