@@ -1,17 +1,36 @@
 const payBtn = document.querySelector(".btn-buy");
 
 payBtn.addEventListener("click", () => {
-  fetch("/stripe-checkout", {
-    method: "post",
-    headers: new Headers({ "Content-Type": "application/Json" }),
+  const cartItems = localStorage.getItem("cartItems");
+
+  if (!cartItems) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  fetch("https://your-backend.com/stripe-checkout", { // Replace with your actual backend URL
+    method: "POST",
+    headers: { "Content-Type": "application/json" }, // Fixed incorrect content-type
     body: JSON.stringify({
-      items: JSON.parse(localStorage.getItem("cartItems")),
+      items: JSON.parse(cartItems),
     }),
   })
-    .then((res) => res.json())
-    .then((url) => {
-      location.href = url;
-      clearCart();
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
     })
-    .catch((err) => console.log(err));
+    .then((data) => {
+      if (data.sessionUrl) {
+        location.href = data.sessionUrl; // Redirect to Stripe Checkout
+        localStorage.removeItem("cartItems"); // Clear cart after redirect
+      } else {
+        throw new Error("Invalid response from server");
+      }
+    })
+    .catch((err) => {
+      console.error("Error:", err);
+      alert("Payment processing failed. Please try again.");
+    });
 });

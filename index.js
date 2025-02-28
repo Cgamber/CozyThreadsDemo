@@ -1,50 +1,39 @@
-require('dotenv').config();
-const express = require('express');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Correct way to use environment variable
-const app = express();
+import { useState, useEffect } from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "./CheckoutForm"; // Ensure this is correctly imported
 
-app.use(express.static('public'));
-app.use(express.json());
+const stripePromise = loadStripe("pk_test_51Qv6HFQnWn5BcULJfLVxCZO5juXohwj7dZrGpYUjozg2bDGq0rZKPMs6MafMyEfehvUHQA3fpuVliZQm5KKrQ9yK00zxYd13SH");
 
-// Route for creating Stripe Checkout session
-app.post('/create-checkout-session', async (req, res) => {
-    try {
-        const { cartItems } = req.body; // cartItems should be passed from the frontend
+export default function App() {
+  const [clientSecret, setClientSecret] = useState("");
 
-        // Map cartItems to Stripe line_items
-        const lineItems = cartItems.map(item => {
-            return {
-                price_data: {
-                    currency: 'usd',
-                    product_data: {
-                        name: item.name,
-                        images: [item.image], // assuming item has an image URL
-                    },
-                    unit_amount: parseInt(item.price * 100), // Convert price to cents
-                },
-                quantity: item.item,
-            };
-        });
+  useEffect(() => {
+    // Fetch client secret from your backend hosted on AWS
+    fetch("https://your-backend.com/create-payment-intent", {  // Replace with your backend's actual URL
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ amount: 5000 }), // Amount in cents (pass dynamically)
+      mode: "cors",  // Ensure CORS is enabled
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret))
+      .catch((err) => console.error("Error fetching client secret:", err));
+  }, []);  // Empty dependency array to run only once on mount
 
-        // Create Checkout Session
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            line_items: lineItems,
-            mode: 'payment',
-            success_url: `${process.env.DOMAIN}/success`, // Define success URL
-            cancel_url: `${process.env.DOMAIN}/cancel`,   // Define cancel URL
-            billing_address_collection: 'required',
-        });
+  const options = clientSecret ? { clientSecret } : null;
 
-        // Respond with the session ID so frontend can redirect to Stripe
-        res.json({ id: session.id });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-// Start the server
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
-});
+  return (
+    <div>
+      {clientSecret ? (
+        <Elements stripe={stripePromise} options={options}>
+          <CheckoutForm />
+        </Elements>
+      ) : (
+        <p>Loading payment...</p>
+      )}
+    </div>
+  );
+}
