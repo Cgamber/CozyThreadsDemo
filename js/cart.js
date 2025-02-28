@@ -1,36 +1,44 @@
-const payBtn = document.querySelector(".btn-buy");
+import { useState, useEffect } from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "./CheckoutForm"; // Ensure this import is correct
 
-payBtn.addEventListener("click", () => {
-  const cartItems = localStorage.getItem("cartItems");
+const stripePromise = loadStripe("pk_test_51Qv6HFQnWn5BcULJfLVxCZO5juXohwj7dZrGpYUjozg2bDGq0rZKPMs6MafMyEfehvUHQA3fpuVliZQm5KKrQ9yK00zxYd13SH");
 
-  if (!cartItems) {
-    alert("Your cart is empty!");
-    return;
-  }
+export default function App() {
+  const [clientSecret, setClientSecret] = useState("");
 
-  fetch("https://your-backend.com/stripe-checkout", { // Replace with your actual backend URL
-    method: "POST",
-    headers: { "Content-Type": "application/json" }, // Fixed incorrect content-type
-    body: JSON.stringify({
-      items: JSON.parse(cartItems),
-    }),
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`HTTP error! Status: ${res.status}`);
-      }
-      return res.json();
+  useEffect(() => {
+    // Replace the URL with the actual backend URL
+    fetch("https://your-backend-url.com/create-payment-intent", {  // Correct the URL
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ amount: 5000 }), // Amount in cents
+      mode: "cors",  // Make sure CORS is enabled
     })
-    .then((data) => {
-      if (data.sessionUrl) {
-        location.href = data.sessionUrl; // Redirect to Stripe Checkout
-        localStorage.removeItem("cartItems"); // Clear cart after redirect
-      } else {
-        throw new Error("Invalid response from server");
-      }
-    })
-    .catch((err) => {
-      console.error("Error:", err);
-      alert("Payment processing failed. Please try again.");
-    });
-});
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Failed to fetch: ${res.statusText}`);
+        }
+        return res.json(); // Process the response as JSON
+      })
+      .then((data) => setClientSecret(data.clientSecret))
+      .catch((err) => console.error("Error fetching client secret:", err));
+  }, []); // Empty dependency array to run only once on mount
+
+  const options = clientSecret ? { clientSecret } : null;
+
+  return (
+    <div>
+      {clientSecret ? (
+        <Elements stripe={stripePromise} options={options}>
+          <CheckoutForm />
+        </Elements>
+      ) : (
+        <p>Loading payment...</p>
+      )}
+    </div>
+  );
+}
