@@ -13,22 +13,25 @@ app.use(cors({
 }));
 
 // Route to create a payment intent
-app.post("/create-payment-intent", async (req, res) => {
-  const { amount } = req.body;
+app.post("/stripe-checkout", async (req, res) => {
+  const { amount } = req.body;  // Get amount from the request body
 
   try {
+    // Create a payment intent with the specified amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
       amount,  // Amount in cents (e.g., 5000 for $50)
-      currency: "usd",  // Currency type
+      currency: "usd",  // Currency type (USD in this case)
     });
 
-    res.json({ clientSecret: paymentIntent.client_secret });  // Send back client secret
+    // Send back the client secret to the frontend
+    res.json({ clientSecret: paymentIntent.client_secret });
   } catch (error) {
-    res.status(500).send({ error: error.message });  // Send error if something goes wrong
+    // If there's an error, return a 500 status with the error message
+    res.status(500).send({ error: error.message });
   }
 });
 
-// Start the server on port 5000 (or your preferred port)
+// Start the server on your desired port (e.g., port 5000)
 app.listen(5000, () => {
   console.log("Server is running on http://localhost:5000");
 });
